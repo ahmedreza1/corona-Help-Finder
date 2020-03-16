@@ -1,0 +1,62 @@
+{% load staticfiles %}
+{% load static %}
+
+<html lang="en">
+<head>
+	<title>Corona Help Finder - Find help, tips to be safe, information and labs that do tests for Corona (covid-19) near you.</title>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+	<nav>
+		<div class="container nav-wrapper">
+			<a href="/" class="brand-logo">Corona Help Finder</a>
+			<ul id="nav-mobile" class="right">
+				<li><a href="/">Home</a></li>
+                  <li><a href="/tips">Tips and Advice</a></li>
+                  <li><a href="/info">Trustful Informations</a></li>
+                  <li><a href="/fake">Fake News</a></li>
+			</ul>
+		</div>
+	</nav>
+
+<iframe src="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+</iframe>
+
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">About Corona Help Finder</h5>
+                <p class="grey-text text-lighten-4">The site is made to help people in various states of India to find help, Labs and hospitals that test for Corona or covid19 virus, tips to be safe, trustful information and to check the fake news that's circulation about the virus.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/tips">Tips and Advice</a></li>
+                  <li><a href="/info">Trustful Informations</a></li>
+                  <li><a href="/fake">Fake News</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            Created by Ahmed Reza with ❤️
+            </div>
+          </div>
+        </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    	$(document).ready(function() {
+    $('select').material_select();
+});
+    </script>
+</body>
+</html>
