@@ -20,5 +20,5 @@ def tips(request):
 def info(request):
 	return render(request, 'covid/info.html')
 
-def fake(request):
-	return render(request, 'covid/fake.html')
+def dashboard(request):
+	return render(request, 'covid/dashboard.html')

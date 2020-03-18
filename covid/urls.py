@@ -6,5 +6,5 @@ urlpatterns = [
     path('chose_state', views.chose_state, name='chose_state'),
     path('tips', views.tips, name='tips'),
     path('info', views.info, name='info'),
-    path('fake', views.fake, name='fake')
+    path('dashboard', views.dashboard, name='dashboard')
 ]
