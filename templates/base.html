@@ -3,30 +3,57 @@
 
 <html lang="en">
 <head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160973103-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-160973103-1');
+</script>
+
 	<title>Corona Help Finder - Find help, tips to be safe, information and labs that do tests for Corona (covid-19) near you.</title>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-	<nav>
-		<div class="container nav-wrapper">
-			<a href="/" class="brand-logo">Corona Help Finder</a>
-			<ul id="nav-mobile" class="right">
-				<li><a href="/">Home</a></li>
-                  <li><a href="/tips">Tips and Advice</a></li>
-                  <li><a href="/info">Trustful Informations</a></li>
-                  <li><a href="/fake">Fake News</a></li>
-			</ul>
-		</div>
-	</nav>
 
+
+
+  
+  <div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Corona Help Finder
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="/tips">Tips and Advice</a>
+    <a href="/info">Trustful Informations</a>
+    <a href="/fake">Fake News</a>
+  </div>
+</div>
+          
 
 <div class="container">
-    <h4 style="text-align: center">The site is made to help people in various states of India to find help, Labs and hospitals that test for Corona or covid19 virus, tips to be safe, trustful information and to check the fake news that's circulation about the virus.</h4>
+    <h5 style="text-align: center">The site is made to help people in various states of India to find help, Labs and hospitals that test for Corona or covid19 virus, tips to be safe, trustful information and to check the fake news that's circulation about the virus.</h5>
+    <br>
     <div class="row">
         <div class="col s4">
             <!-- Promo Content 1 goes here -->
@@ -62,12 +89,12 @@
   <select class="browser-default" name="state">
     <option value="" disabled selected>Choose your state</option>
     <option value="Andhra Pradesh">Andhra Pradesh</option>
-  <option value="Andaman & Nicobar Island">Andaman & Nicobar Islands</option>
+  <option value="Andaman & Nicobar Islands">Andaman & Nicobar Islands</option>
   <option value="Assam">Assam</option>
   <option value="Bihar">Bihar</option>
   <option value="Chandigarh">Chandigarh</option>
   <option value="Delhi-NCR">Delhi-NCR</option>
-  <option value="Gujrat">BihGujratar</option>
+  <option value="Gujarat">Gujarat</option>
   <option value="Haryana">Haryana</option>
   <option value="Himachal Pradesh">Himachal Pradesh</option>
   <option value="Jammu and Kashmir">Jammu and Kashmir</option>
@@ -77,18 +104,18 @@
   <option value="Kerala">Kerala</option>
   <option value="Madhya Pradesh">Madhya Pradesh</option>
   <option value="Meghalaya">Meghalaya</option>
-  <option value="Maharastra">Maharastra</option>
+  <option value="Maharashtra">Maharashtra</option>
   <option value="Manipur">Manipur</option>
   <option value="Odisha">Odisha</option>
   <option value="Puducherry">Puducherry</option>
   <option value="Punjab">Punjab</option>
-  <option value="Rjasthan">Rajasthan</option>
-  <option value="Tamil Nadu">TAmil Nadu</option>
+  <option value="Rajasthan">Rajasthan</option>
+  <option value="Tamil Nadu">Tamil Nadu</option>
   <option value="Tripura">Tripura</option>
 
   <option value="Telangana">Telangana</option>
   <option value="Uttar Pradesh">Uttar Pradesh</option>
-  <option value="Uttarakhand">Uttarakhand</option>
+  <option value="UttaraKhand">UttaraKhand</option>
   <option value="West Bengal">West Bengal</option>
 
   </select>
@@ -126,11 +153,12 @@
           </div>
         </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 <script>
     	$(document).ready(function() {
     $('select').material_select();
 });
     </script>
+
 </body>
 </html>
