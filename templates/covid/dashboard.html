@@ -23,33 +23,68 @@
 </head>
 
 <body>
-
-
-
-  
   <div class="nav">
-  <input type="checkbox" id="nav-check">
-  <div class="nav-header">
-    <div class="nav-title">
-      Corona Help Finder
+    <input type="checkbox" id="nav-check">
+    <div class="nav-header">
+      <div class="nav-title">
+        Corona Help Finder
+      </div>
+    </div>
+    <div class="nav-btn">
+      <label for="nav-check">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/tips">Tips and Advice</a>
+      <a href="/info">Trustful Informations</a>
+      <a href="/dashboard">Dashboard</a>
     </div>
   </div>
-  <div class="nav-btn">
-    <label for="nav-check">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
-  </div>
-  
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/tips">Tips and Advice</a>
-    <a href="/info">Trustful Informations</a>
-    <a href="/dashboard">Dashboard</a>
-  </div>
-</div>
-<h4 style="text-align: center;">This Map shows Covid 19 Pendamic in India</h4>
+
+  <!-- The Mobie View Begins -->
+  {% if request.user_agent.is_mobile %}
+
+  <h4 style="text-align: center;">This Map shows Covid 19 Pendamic in India</h4>
+  <p style="text-align: center;"><strong>Hover/Click on any state to know details.</strong></p>
+  <iframe id="conmap" allowtransparency="true" src="https://edata.ndtv.com/coronavirus/daily/india_color.html?device=wap" scrolling="no" class="_indiamap  u_data2" data-id="bellwetherulta" width="100%" height="590px" frameborder="0"> </iframe>
+  <br>
+  <br>
+
+
+  <h4 style="text-align: center;">This Graph shows Covid 19 Daily Trends in India</h4>
+  <p style="text-align: center;"><strong>Hover/Click on any date to know details.</strong></p>
+  <iframe id="cordaily" allowtransparency="true" src="https://edata.ndtv.com/coronavirus/graph.html?tabs=0&type=daily" scrolling="no" class="_indiamap  u_data3" data-id="bellwetherulta" width="100%" height="610px" frameborder="0"> </iframe>
+  <br>
+  <br>
+
+
+  <h4 style="text-align: center;">This Map shows Covid 19 history in India</h4>
+  <p style="text-align: center;"><strong>Hover/Click on any region to know details.</strong></p>
+  <iframe id="corall" allowtransparency="true" src="https://edata.ndtv.com/coronavirus/graph.html?tabs=0&type=all" scrolling="no" class="_indiamap  u_data4" data-id="bellwetherulta" width="100%" height="610px" frameborder="0"> </iframe>
+  <br>
+  <br>
+
+
+  <h4 style="text-align: center;">This Map shows Covid 19 Cases in India statewise</h4>
+  <p style="text-align: center;"><strong>Scroll down for more states and union territory.</strong></p>
+  <iframe id="coronaworld" allowtransparency="true" src="https://edata.ndtv.com/coronavirus/index.html?device=wap" scrolling="no" class="_indiamap  u_data5" data-id="bellwetherulta" width="100%" height="550px" frameborder="0"> </iframe>
+  <br>
+  <br>
+
+
+  <h4 style="text-align: center;">This Map shows Covid 19 Cases all around the World</h4>
+  <p style="text-align: center;"><strong>Hover/Click on any region to know details.</strong></p>
+  <iframe id="coronaworld" allowtransparency="true" src="https://edata.ndtv.com/coronavirus/index.html?device=hp" scrolling="no" width="100%" height="323px" frameborder="0"></iframe>
+  {% endif %}
+  <!-- The Mobie View Ends -->
+
+
+  <h4 style="text-align: center;">This Map shows Covid 19 Pendamic in India</h4>
 <p style="text-align: center;"><strong>Hover/Click on any state to know details.</strong></p>
 <div style="margin: auto;
   width: 50%;
@@ -90,6 +125,7 @@
 
 
 <p style="font-size: 8px;">Data Souce: NDTV and WHO</p>
+
 
 <footer class="page-footer">
           <div class="container">
