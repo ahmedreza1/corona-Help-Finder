@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="p-5">
+<img src="/media/{{myprofile.pic}}" />
+<h1 class="myhead2">{{myprofile.name}}</h1>
+<p><strong>Address: {{myprofile.address}}</strong></p>
+<p><strong>Phone Number: {{myprofile.phone_no}}</strong></p>
+<p><strong>Email: {{myprofile.user.email}}</strong></p>
+<p><strong>About:</strong> {{myprofile.purpose}}</p>
+<p><strong> Total Donation Recived: {{myprofile.donation_recived}}</strong></p>
+<hr>
+
+<table class="table my-3">
+    <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+{% for MyPost in user_posts %}
+        <tr>
+            <td>{{MyPost.title}}</td>
+            <td>{{MyPost.cr_date | date:"d/m/y"}}</td>
+            <td>
+            <a class="btn btn-dark btn-sm" href='/covid/mypost/{{MyPost.id}}'>Read More</a>
+            <a class="btn btn-dark btn-sm" href='/covid/mypost/delete/{{n1.id}}'>Delete</a>
+            </td>
+        </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
