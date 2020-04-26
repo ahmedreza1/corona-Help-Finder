@@ -1,97 +1,20 @@
-{% load staticfiles %}
-{% load static %}
+{% extends 'base.html' %}
+{% block content %}
+<div class="s130" style="margin-top: 0px; padding-top: 0px;">
 
-<html lang="en">
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160973103-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-160973103-1');
-</script>
-
-	<title>Corona Help Finder - Find help, tips to be safe, information and labs that do tests for Corona (covid-19) near you.</title>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script
-        src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-        crossorigin="anonymous"></script>
-</head>
-
-<body>
+<h5 style="margin-top: 100px; text-align: center; width:50%; color: white; text-shadow: 0px 10px 50px rgba(0, 0, 0, 0.9);"><strong>The site is made to help people in various states of India to find help, Labs and hospitals that test for Corona or covid19 virus, tips to be safe, trustful information and to check the fake news that's circulation about the virus.</strong></h5>
 
 
-
-  
-  <div class="nav">
-  <input type="checkbox" id="nav-check">
-  <div class="nav-header">
-    <div class="nav-title">
-      Corona Help Finder
-    </div>
-  </div>
-  <div class="nav-btn">
-    <label for="nav-check">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
-  </div>
-  
-  <div class="nav-links">
-    <a href="/">Home</a>
-    <a href="/tips">Tips and Advice</a>
-    <a href="/info">Trustful Informations</a>
-    <a href="/dashboard">Dashboard</a>
-    <a href="/covid/profile/edit/{{ user.myprofile.id }}">Edit Profile</a>
-    <a href="/covid/mypost/">My Post</a>
-  </div>
-</div>
-
-<div class="container">
-    <h5 style="text-align: center">The site is made to help people in various states of India to find help, Labs and hospitals that test for Corona or covid19 virus, tips to be safe, trustful information and to check the fake news that's circulation about the virus.</h5>
-    <br>
-    <div class="row">
-        <div class="col s4">
-            <!-- Promo Content 1 goes here -->
-            <div class="center">
-                <i class="large material-icons" style="color: #EE6E73">flash_on</i>
-                <p>Find help near you</p>
-                <p class="light center">Find Hospitals & clinics near you that do tests for Corona virus.</p>
+      <form action="{% url 'chose_state' %}" method="post">
+      {% csrf_token %}
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <div class="svg-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+              </svg>
             </div>
-        </div>
-
-        <div class="col s4">
-            <!-- Promo Content 2 goes here -->
-            <div class="center">
-                <i class="large material-icons" style="color: orange">camera</i>
-                <p>Tips & Advices</p>
-                <p class="light center">Tips & advices to be safe from the virus.</p>
-            </div>
-        </div>
-
-        <div class="col s4">
-            <!-- Promo Content 3 goes here -->
-            <div class="center">
-                <i class="large material-icons" style="color: blue">chrome_reader_mode</i>
-                <p>Trustful information</p>
-                <p class="light center">Find informations from reliable sources.</p>
-            </div>
-        </div>
-    </div>
-    
-    <form action="{% url 'chose_state' %}" method="post">
-    	{% csrf_token %}
-<label>Select state to see hospitals, clinics and labs that do tests for Corona Virus.</label>
-  <select class="browser-default" name="state">
+            <select id="search" class="form-control" name="state">
     <option value="" disabled selected>Choose your state</option>
     <option value="Andhra Pradesh">Andhra Pradesh</option>
   <option value="Andaman & Nicobar Islands">Andaman & Nicobar Islands</option>
@@ -124,46 +47,13 @@
   <option value="West Bengal">West Bengal</option>
 
   </select>
-    	<button class="btn waves-effect waves-light" type="submit" name="action">Submit
-            <i class="material-icons right">send</i>
-        </button>
-    </form> 
-</div>
-
-{% block content %}
-{% endblock content %}
-
-<footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">About Corona Help Finder</h5>
-                <p class="grey-text text-lighten-4">The site is made to help people in various states of India to find help, Labs and hospitals that test for Corona or covid19 virus, tips to be safe, trustful information and to check the fake news that's circulation about the virus.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/tips">Tips and Advice</a></li>
-                  <li><a href="/info">Trustful Informations</a></li>
-                  <li><a href="/dashboard">Dashboard</a></li>
-                </ul>
-              </div>
-            </div>
           </div>
-          <div class="footer-copyright">
-            <div class="container">
-            Created by Ahmed Reza with ❤️
-            </div>
+          <div class="input-field second-wrap">
+            <button class="btn-search" type="submit" name="action">SEARCH</button>
           </div>
-        </footer>
+        </div>
+        <span class="info">Select state to see hospitals, clinics and labs that do tests for Corona Virus.</span>
+      </form>
+    </div>
+{% endblock %}
 
-
-<script>
-    	$(document).ready(function() {
-    $('select').material_select();
-});
-    </script>
-
-</body>
-</html>

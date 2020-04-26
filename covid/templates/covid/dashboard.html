@@ -1,50 +1,6 @@
-{% load staticfiles %}
-{% load static %}
-
-<html lang="en">
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-160973103-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-160973103-1');
-</script>
-
-  <title>Corona Help Finder - Find help, tips to be safe, information and labs that do tests for Corona (covid-19) near you.</title>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-
-<body>
-  <div class="nav">
-    <input type="checkbox" id="nav-check">
-    <div class="nav-header">
-      <div class="nav-title">
-        Corona Help Finder
-      </div>
-    </div>
-    <div class="nav-btn">
-      <label for="nav-check">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-    </div>
-
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/tips">Tips and Advice</a>
-      <a href="/info">Trustful Informations</a>
-      <a href="/dashboard">Dashboard</a>
-    </div>
-  </div>
+{% extends 'base.html' %}
+{% block content %}
+<br><br><br><br>
 
   <!-- The Mobie View Begins -->
   {% if request.user_agent.is_mobile %}
@@ -126,37 +82,4 @@
 
 <p style="font-size: 8px;">Data Souce: NDTV and WHO</p>
 
-
-<footer class="page-footer">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">About Corona Help Finder</h5>
-                <p class="grey-text text-lighten-4">The site is made to help people in various states of India to find help, Labs and hospitals that test for Corona or covid19 virus, tips to be safe, trustful information and to check the fake news that's circulation about the virus.</p>
-              </div>
-              <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
-                <ul>
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/tips">Tips and Advice</a></li>
-                  <li><a href="/info">Trustful Informations</a></li>
-                  <li><a href="/dashboard">Dashboard</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="footer-copyright">
-            <div class="container">
-            Created by Ahmed Reza with ❤️
-            </div>
-          </div>
-        </footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script>
-    	$(document).ready(function() {
-    $('select').material_select();
-});
-    </script>
-</body>
-</html>
+{% endblock %}
