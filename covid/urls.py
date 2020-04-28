@@ -21,7 +21,7 @@ urlpatterns = [
     path('mypost/delete/<int:pk>', views.MyPostDeleteView.as_view(success_url="/covid/mypost")),
     path('mypost/', views.MyPostListView.as_view()),
     path('mypost/<int:pk>', views.MyPostDetailView.as_view()),
-    path('profile/edit/<int:pk>', views.MyProfileUpdateView.as_view(success_url="/covid/home")),
+    path('mypost/edit/<int:pk>', views.MyPostUpdateView.as_view(success_url="/covid/mypost")),
 # Root URL
     path('', RedirectView.as_view(url="home/")), 
 ]

@@ -43,6 +43,7 @@ class MyPost(models.Model):
 	total_donars = models.IntegerField(null=True, blank=True)
 	title = models.CharField(max_length = 200)
 	body = models.TextField(null=False, blank=False)
+	short_description = models.CharField(max_length = 240)
 	cr_date = models.DateTimeField(auto_now_add=True)
 	uploaded_by = models.ForeignKey(to=MyProfile, on_delete=CASCADE, null=True, blank=True)
 	def __str__(self):

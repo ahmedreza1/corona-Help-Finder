@@ -1,33 +1,126 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="p-5">
-<img src="/media/{{myprofile.pic}}" />
-<h1 class="myhead2">{{myprofile.name}}</h1>
-<p><strong>Address: {{myprofile.address}}</strong></p>
-<p><strong>Phone Number: {{myprofile.phone_no}}</strong></p>
-<p><strong>Email: {{myprofile.user.email}}</strong></p>
-<p><strong>About:</strong> {{myprofile.purpose}}</p>
-<p><strong> Total Donation Recived: {{myprofile.donation_recived}}</strong></p>
-<hr>
+<div class="profilepage">
+<!-- Vertical navbar -->
+<div class="vertical-nav bg-white" id="sidebar">
+  <div class="py-4 px-3 mb-4 bg-light">
+    <div class="media d-flex align-items-center"><img src="/media/{{myprofile.pic}}" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+      <div class="media-body">
+        <h4 class="m-0">{{myprofile.name}}</h4>
+        <p class="font-weight-light text-muted mb-0">{{myprofile.description}}</p>
+      </div>
+    </div>
+  </div>
 
-<table class="table my-3">
-    <thead class="thead-dark">
-        <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-{% for MyPost in user_posts %}
-        <tr>
-            <td>{{MyPost.title}}</td>
-            <td>{{MyPost.cr_date | date:"d/m/y"}}</td>
-            <td>
-            <a class="btn btn-dark btn-sm" href='/covid/mypost/{{MyPost.id}}'>Read More</a>
-            <a class="btn btn-dark btn-sm" href='/covid/mypost/delete/{{n1.id}}'>Delete</a>
-            </td>
-        </tr>
-{% endfor %}
-</table>
+  <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0"><a data-toggle="collapse" href="#collapseExample1" role="button" class="py-2 shadow-sm with-chevron" aria-expanded="false" aria-controls="collapseExample1">
+          Details<i class="fa fa-angle-down"></i>
+        </a></p>
+<div id="collapseExample1">
+  <ul class="nav flex-column bg-white mb-0">
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+                <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                {{myprofile.address}}
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+                <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+                {{myprofile.phone_no}}
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+                <i class="fa fa-at mr-3 text-primary fa-fw"></i>
+                {{myprofile.user.email}}
+            </a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link text-dark font-italic">
+                <i class="fa fa-money mr-3 text-primary fa-fw"></i>
+                Donation Recived<br>{{myprofile.donation_recived}}
+            </a>
+    </li>
+  </ul>
 </div>
+
+  <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0"><a data-toggle="collapse" href="#collapseExample2" role="button" class="py-2 shadow-sm with-chevron" aria-expanded="false" aria-controls="collapseExample2">
+          About<i class="fa fa-angle-down"></i>
+        </a></p>
+        <div id="collapseExample2">
+  <p style="font-size: 14px;"><i>{{myprofile.purpose}}</i></p>
+  <br><br>
+</div>
+</div>
+<!-- End vertical navbar -->
+
+
+<!-- Page content holder -->
+<div class="page-content p-1" id="content">
+    <button style="position: relative; bottom: -90;" id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Show/Hide Info</small></button>
+
+    <div class="container py-5">
+  <!-- For Demo Purpose -->
+<section class="py-5 header text-center">
+    <div class="container py-4">
+        <header>
+            <h1 class="display-4">All work done by {{myprofile.name}}.</h1>
+            <p class="font-italic text-muted mb-1">Below are all the work done by {{myprofile.name}} with the help of money that they raised.</p>
+            <p class="font-italic text-muted">Click the view more button to see details such as how much money was spend and who were the donars.
+            </p>
+        </header>
+    </div>
+</section>
+
+    <div class="s200">
+      <form>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <div class="svg-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+              </svg>
+            </div>
+            <input id="search" placeholder="Search your work to find easily." value="{{ request.GET.si }}" type="text" name="si" />
+          </div>
+          <div class="input-field second-wrap">
+            <button class="btn-search" type="submit" value="Search">SEARCH</button>
+          </div>
+        </div>
+        <span class="info">Search {{myprofile.name}} work with title or description.</span>
+      </form>
+    </div>
+
+  <div class="py-5">
+    <div class="row">
+
+
+      {% for MyPost in user_posts %}
+      <div class="col-lg-6 mb-3 mb-lg-0">
+        <div class="hover hover-4 text-white rounded"><img src="/media/{{MyPost.main_pic}}" alt="">
+          <div class="hover-overlay"></div>
+          <div class="hover-4-content">
+            <h3 class="hover-4-title text-uppercase font-weight-bold mb-0"><span class="font-weight-light">{{MyPost.title}} </span></h3>
+            <p class="hover-4-title text-uppercase font-weight-bold mb-0"><span class="font-weight-light">Published on: </span>{{MyPost.cr_date | date:"d/m/y"}}</p>
+            <p class="hover-4-description text-uppercase mb-0 small">{{MyPost.short_description}}</p>
+          </div>
+        </div>
+        <a class="btn btn-dark btn-sm mt-2" href='/covid/mypost/{{MyPost.id}}'>Read More</a>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+<script>
+    $(function() {
+  // Sidebar toggle behavior
+  $('#sidebarCollapse').on('click', function() {
+    $('#sidebar, #content').toggleClass('active');
+  });
+});
+</script>
 {% endblock %}

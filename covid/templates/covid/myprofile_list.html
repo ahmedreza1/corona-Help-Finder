@@ -1,31 +1,73 @@
 {% extends 'base.html' %}
 {% block content %}
-<br>
-<div class="p-5">
-<h1 class="myhead2">Orginisation</h1>
-<hr>
-<form class="form-inline">
-<input class="form-control mr-3" placeholder="Search" value="{{ request.GET.si }}" type="text" name="si" />
-<input class="btn btn-dark mr-3" type="submit" value="Search" />
-</form>
 
-<table class="table my-3">
-    <thead class="thead-dark">
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-{% for n1 in myprofile_list %}
-        <tr>
-            <td>{{n1.name}}</td>
-            <td>{{n1.description}}</td>
-            <td>
-            <a class="btn btn-dark btn-sm" href='/covid/myprofile/{{n1.id}}'>View Profile</a>
-            </td>
-        </tr>
-{% endfor %}
-</table>
-</div>
+<!-- Demo header-->
+<section class="py-5 header text-center">
+    <div class="container py-4">
+        <header>
+            <h1 class="display-4">Donate to fight Covid19</h1>
+            <p class="font-italic text-muted mb-1">This is a revolutionary way to danate, this donate feature is a decentralized, distributed and plublicize system.</p>
+            <p class="font-italic text-muted">If you donate to an orginisations you will have full knowledge of how they are spedning your money by looking at their <u>WORK</u>. You can choose an orginisation to donate by looking at their previous WORK.
+            </p>
+        </header>
+    </div>
+</section>
+
+    <div class="s200">
+      <form>
+        <div class="inner-form">
+          <div class="input-field first-wrap">
+            <div class="svg-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+              </svg>
+            </div>
+            <input id="search" placeholder="Search orginisations to donate" value="{{ request.GET.si }}" type="text" name="si" />
+          </div>
+          <div class="input-field second-wrap">
+            <button class="btn-search" type="submit" value="Search">SEARCH</button>
+          </div>
+        </div>
+        <span class="info">All orginisations mentioned are working to help us fight from Covid19.</span>
+      </form>
+    </div>
+
+
+<section class="pb-5">
+    <div class="container text-center">
+        <!-- Masonry grid -->
+        <div class="gallery-wrapper">
+            <!-- Grid sizer -->
+            <div class="grid-sizer col-lg-4 col-md-6"></div>
+            {% for n1 in myprofile_list %}
+            
+            <!-- Grid item -->
+            <div class="col-lg-4 col-md-6 grid-item mb-4">
+                <img class="img-fluid w-100 mb-3 img-thumbnail shadow-sm rounded-0" src="/media/{{n1.pic}}" alt="">
+                <h2 class="h4">{{n1.name}}</h2>
+                <p class="small text-muted font-italic">{{n1.description}}</p>
+                <a class="btn btn-dark btn-sm" href='/covid/myprofile/{{n1.id}}'>View Orginisation</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<script>
+    $(function () {
+
+    // Initate masonry grid
+    var $grid = $('.gallery-wrapper').masonry({
+        temSelector: '.grid-item',
+        columnWidth: '.grid-sizer',
+        percentPosition: true,
+    });
+
+    // Initate imagesLoaded
+    $grid.imagesLoaded().progress( function() {
+        $grid.masonry('layout');
+    });
+    
+});
+</script>
 {% endblock %}
+
