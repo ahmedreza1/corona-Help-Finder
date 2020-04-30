@@ -8,6 +8,9 @@
       <div class="media-body">
         <h4 class="m-0">{{myprofile.name}}</h4>
         <p class="font-weight-light text-muted mb-0">{{myprofile.description}}</p>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Details for Donations
+</button>
       </div>
     </div>
   </div>
@@ -115,6 +118,36 @@
 </div>
 </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Giving is good donate now.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% for MyPayment in bank_details %}
+        <div class="bank_transfer-message svelte-qd117s">To donate to {{myprofile.name}}, copy their account details and transfer directly to them. Once they recive their money they will add you as a donar. </div>
+    <div class="neft-details svelte-qd117s">
+        <div>
+            <div class="ct-tr svelte-qd117s"><span class="ct-th svelte-qd117s">Account:</span> <span class="ct-td svelte-qd117s id="myInput"">{{MyPayment.account_num}}</span></div>
+            <div class="ct-tr svelte-qd117s"><span class="ct-th svelte-qd117s">Bank Name:</span> <span class="ct-td svelte-qd117s">{{MyPayment.bank_name}}</span></div>
+            <div class="ct-tr svelte-qd117s"><span class="ct-th svelte-qd117s">IFSC:</span> <span class="ct-td svelte-qd117s">{{MyPayment.ifsc}}</span></div>
+            <div class="ct-tr svelte-qd117s"><span class="ct-th svelte-qd117s">Beneficiary Name:</span> <span class="ct-td svelte-qd117s">{{MyPayment.beneficiary_name}}</span></div>
+        </div>
+    </div>
+{% endfor %}
+      </div>
+      <div class="modal-footer">
+        <button onclick="myFunction()">Copy text</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
     $(function() {
   // Sidebar toggle behavior
@@ -123,4 +156,15 @@
   });
 });
 </script>
+<script>
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+}
+</script>
+
+
 {% endblock %}

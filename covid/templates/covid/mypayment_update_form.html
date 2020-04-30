@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<main class="p-5">
+	<div class="row">
+		<div class="col-sm-6 offset-sm-6">
+			<h1 class="myhead2">Edit your bank account details</h1>
+			<hr>
+			<form enctype="multupart/form-data" method="POST">
+				{% csrf_token %}
+				{{form | crispy}}
+				<input type="submit" value="Save Edits" class="btn btn-dark my-3">
+			</form>
+		</div>
+	</div>
+	
+</main>
+{% endblock content %}

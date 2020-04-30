@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 from django.core.validators import MinValueValidator, RegexValidator
+from django.core.exceptions import PermissionDenied
 
 # Create your models here.
 class State(models.Model):
@@ -15,7 +16,7 @@ class State(models.Model):
 		verbose_name_plural = 'states'
 
 
-# Create your models here.
+# The orginisation model.
 class MyProfile(models.Model):
 	name = models.CharField(max_length = 500)
 	user = models.OneToOneField(to=User, on_delete=CASCADE)
@@ -31,7 +32,7 @@ class MyProfile(models.Model):
 	def __str__(self):
 		return "%s" % self.user
 
-
+# The orginisation Work model.
 class MyPost(models.Model):
 	pic_one = models.ImageField(upload_to = "image\\", null=True)
 	pic_two = models.ImageField(upload_to = "image\\", null=True)
@@ -48,3 +49,14 @@ class MyPost(models.Model):
 	uploaded_by = models.ForeignKey(to=MyProfile, on_delete=CASCADE, null=True, blank=True)
 	def __str__(self):
 		return "%s" % self.title
+
+
+# The orginisation Bank Account Details model.
+class MyPayment(models.Model):
+	account_num = models.IntegerField(null=False, blank=False)
+	bank_name = models.CharField(max_length = 240, null=False, blank=False)
+	ifsc = models.CharField(max_length = 240, null=False, blank=False)
+	beneficiary_name = models.CharField(max_length = 240, null=False, blank=False)
+	author = models.ForeignKey(to=MyProfile, on_delete=CASCADE, null=True, blank=True)
+	def __str__(self):
+		return "%s" % self.account_num

@@ -250,3 +250,38 @@
     width: calc(100% - 17rem);
   }
 }
+
+
+/* Bootstrap Modal in Orginization's profile */
+.neft-details.svelte-qd117s {
+    margin: 15px 0 0 -15px;
+    padding: 10px 5px;
+    border: 1px solid rgba(0,0,0,0.08);
+    box-sizing: border-box;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.01);
+    width: 90%;
+    position: relative;
+    right: -10%;
+}
+.ct-tr.svelte-qd117s {
+    padding: 5px 10px;
+    text-align: left;
+}
+.ct-th.svelte-qd117s {
+    width: 45%;
+    display: inline-block;
+    color: rgba(81,89,120,0.7);
+}
+.ct-td.svelte-qd117s {
+    display: inline-block;
+    width: 50%;
+    vertical-align: text-top;
+    text-align: left;
+    color: #424242;
+}
+
+.bank_transfer-message.svelte-qd117s {
+    line-height: 18px;
+    color: rgba(81,89,120,0.7);
+    text-align: left;
+}

@@ -7,7 +7,7 @@
         <header>
             <h1 class="display-4">Donate to fight Covid19</h1>
             <p class="font-italic text-muted mb-1">This is a revolutionary way to danate, this donate feature is a decentralized, distributed and plublicize system.</p>
-            <p class="font-italic text-muted">If you donate to an orginisations you will have full knowledge of how they are spedning your money by looking at their <u>WORK</u>. You can choose an orginisation to donate by looking at their previous WORK.
+            <p class="font-italic text-muted">If you donate to an organizations you will have full knowledge of how they are spedning your money by looking at their <u>WORK</u>. You can choose an organization to donate by looking at their previous WORK.
             </p>
         </header>
     </div>
@@ -22,13 +22,13 @@
                 <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
               </svg>
             </div>
-            <input id="search" placeholder="Search orginisations to donate" value="{{ request.GET.si }}" type="text" name="si" />
+            <input id="search" placeholder="Search organizations to donate" value="{{ request.GET.si }}" type="text" name="si" />
           </div>
           <div class="input-field second-wrap">
             <button class="btn-search" type="submit" value="Search">SEARCH</button>
           </div>
         </div>
-        <span class="info">All orginisations mentioned are working to help us fight from Covid19.</span>
+        <span class="info">All organizations mentioned are working to help us fight from Covid19.</span>
       </form>
     </div>
 
@@ -46,7 +46,7 @@
                 <img class="img-fluid w-100 mb-3 img-thumbnail shadow-sm rounded-0" src="/media/{{n1.pic}}" alt="">
                 <h2 class="h4">{{n1.name}}</h2>
                 <p class="small text-muted font-italic">{{n1.description}}</p>
-                <a class="btn btn-dark btn-sm" href='/covid/myprofile/{{n1.id}}'>View Orginisation</a>
+                <a class="btn btn-dark btn-sm" href='/covid/myprofile/{{n1.id}}'>View organization</a>
             </div>
             {% endfor %}
         </div>

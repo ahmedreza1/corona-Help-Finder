@@ -4,7 +4,7 @@ from django.views.generic.base import TemplateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
-from covid.models import MyPost, MyProfile
+from covid.models import MyPost, MyProfile, MyPayment
 from . import models
 from django.views.generic.detail import DetailView
 from django.db.models import Q
@@ -65,8 +65,7 @@ class DashboardView(TemplateView):
 class MyProfileUpdateView(UpdateView):
     model = MyProfile
     fields = ["name", "address", "phone_no", "description", "pic", "purpose"]
-
-@method_decorator(login_required, name="dispatch")    
+  
 class MyProfileListView(ListView):
     model = MyProfile
     def get_queryset(self):
@@ -81,7 +80,7 @@ class MyProfileListView(ListView):
         #         p1.followed = True
         return profList
 
-@method_decorator(login_required, name="dispatch")    
+  
 class MyProfileDetailView(DetailView):
     model = MyProfile
     def get_context_data(self, **kwargs):
@@ -89,7 +88,9 @@ class MyProfileDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         # Add in a QuerySet of all the user posts
         user_posts = MyPost.objects.filter(uploaded_by_id=self.kwargs['pk']).order_by('-cr_date')
+        bank_details = MyPayment.objects.filter(author=self.kwargs['pk'])
         context['user_posts'] = user_posts
+        context['bank_details'] = bank_details
         return context
 
 
@@ -114,7 +115,7 @@ class MyPostListView(ListView):
             si = ""
         return MyPost.objects.filter(Q(uploaded_by = self.request.user.myprofile)).filter(Q(title__icontains = si) | Q(body__icontains = si)).order_by("-id");
  
-@method_decorator(login_required, name="dispatch")    
+
 class MyPostDetailView(DetailView):
     model = MyPost
 
@@ -126,3 +127,21 @@ class MyPostDeleteView(DeleteView):
 class MyPostUpdateView(UpdateView):
     model = MyPost
     fields = ["title", "body", "main_pic", "pic_one", "pic_two", "pic_three", "pic_four", "pic_five", "amount_spend", "total_donars"]
+
+
+
+#### Orginisations Bank Account related views ####
+@method_decorator(login_required, name="dispatch")
+class MyPaymentCreate(CreateView):
+    model = MyPayment
+    fields = ["account_num", "bank_name", "ifsc", "beneficiary_name"]
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.author = self.request.user.myprofile
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+@method_decorator(login_required, name="dispatch")
+class MyPaymentUpdateView(UpdateView):
+    model = MyPayment
+    fields = ["account_num", "bank_name", "ifsc", "beneficiary_name"]

@@ -22,6 +22,9 @@ urlpatterns = [
     path('mypost/', views.MyPostListView.as_view()),
     path('mypost/<int:pk>', views.MyPostDetailView.as_view()),
     path('mypost/edit/<int:pk>', views.MyPostUpdateView.as_view(success_url="/covid/mypost")),
+# Orginizations Bank Account Details URL
+    path('mypayment/create/', views.MyPaymentCreate.as_view(success_url="/covid/myprofile")),
+    path('mypayment/edit/<int:pk>', views.MyPaymentUpdateView.as_view(success_url="/covid/myprofile")),
 # Root URL
     path('', RedirectView.as_view(url="home/")), 
 ]
