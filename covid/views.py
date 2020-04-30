@@ -4,7 +4,7 @@ from django.views.generic.base import TemplateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.views.generic.list import ListView
-from covid.models import MyPost, MyProfile, MyPayment
+from covid.models import MyPost, MyProfile, MyPayment, FakeCheck
 from . import models
 from django.views.generic.detail import DetailView
 from django.db.models import Q
@@ -145,3 +145,13 @@ class MyPaymentCreate(CreateView):
 class MyPaymentUpdateView(UpdateView):
     model = MyPayment
     fields = ["account_num", "bank_name", "ifsc", "beneficiary_name"]
+
+
+#### FakeCheck Views ####
+class FakecheckListView(ListView):
+    model = FakeCheck
+    def get_queryset(self):
+        sf = self.request.GET.get("sf")
+        if sf == None:
+            sf = ""
+        return FakeCheck.objects.filter(Q(msg__icontains = sf)).order_by("-id");

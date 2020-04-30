@@ -25,6 +25,8 @@ urlpatterns = [
 # Orginizations Bank Account Details URL
     path('mypayment/create/', views.MyPaymentCreate.as_view(success_url="/covid/myprofile")),
     path('mypayment/edit/<int:pk>', views.MyPaymentUpdateView.as_view(success_url="/covid/myprofile")),
+# FakeCheck URL
+    path('fakecheck/', views.FakecheckListView.as_view()),
 # Root URL
     path('', RedirectView.as_view(url="home/")), 
 ]

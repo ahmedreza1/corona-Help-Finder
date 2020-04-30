@@ -60,3 +60,9 @@ class MyPayment(models.Model):
 	author = models.ForeignKey(to=MyProfile, on_delete=CASCADE, null=True, blank=True)
 	def __str__(self):
 		return "%s" % self.account_num
+
+# The Fake whatsapp forward model
+class FakeCheck(models.Model):
+	msg = models.TextField(null=False, blank=False)
+	def __str__(self):
+		return "%s" % self.msg
