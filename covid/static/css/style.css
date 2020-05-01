@@ -185,22 +185,8 @@
 
 /* Orginisation Profile Page */
 
-.vertical-nav {
-  min-width: 17rem;
-  width: 17rem;
-  height: 100vh;
-  position: fixed;
-  top: 55;
-  left: 0;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s;
-  z-index: 1;
-  overflow: auto;
-}
 
 .page-content {
-  width: calc(100% - 17rem);
-  margin-left: 17rem;
   transition: all 0.4s;
 }
 
@@ -222,39 +208,11 @@
   color: #aaa;
 }
 
-.with-chevron[aria-expanded='true'] i {
-  display: block;
-  transform: rotate(180deg) !important;
+
+.profile-header {
+    transform: translateY(5rem);
 }
 
-
-/* for toggle behavior */
-
-#sidebar.active {
-  margin-left: -17rem;
-}
-
-#content.active {
-  width: 100%;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  #sidebar {
-    margin-left: -17rem;
-  }
-  #sidebar.active {
-    margin-left: 0;
-  }
-  #content {
-    width: 100%;
-    margin: 0;
-  }
-  #content.active {
-    margin-left: 17rem;
-    width: calc(100% - 17rem);
-  }
-}
 
 
 /* Bootstrap Modal in Orginization's profile */
@@ -290,3 +248,4 @@
     color: rgba(81,89,120,0.7);
     text-align: left;
 }
+

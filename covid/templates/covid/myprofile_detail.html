@@ -1,79 +1,59 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="profilepage">
-<!-- Vertical navbar -->
-<div class="vertical-nav bg-white" id="sidebar">
-  <div class="py-4 px-3 mb-4 bg-light">
-    <div class="media d-flex align-items-center"><img src="/media/{{myprofile.pic}}" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
-      <div class="media-body">
-        <h4 class="m-0">{{myprofile.name}}</h4>
-        <p class="font-weight-light text-muted mb-0">{{myprofile.description}}</p>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Details for Donations
-</button>
+  <!-- Info part of the profile -->
+  <div class="bg-white shadow rounded overflow-hidden">
+    <div class="px-4 pb-4 bg-dark" >
+      <div class="media align-items-end profile-header">
+        <div class="profile mr-3"><img src="/media/{{myprofile.pic}}" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+          <a href="#" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#exampleModal">Donate Now!</a>
+          <a class="btn btn-default" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Read More</a>
+        </div>
+
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <div class="aboutsec">
+            <div class="p-4 bg-light rounded shadow-sm">
+              <h5 class="mb-3">About {{myprofile.name}}</h5>
+              <p class="font-italic mb-0">{{myprofile.purpose}}.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="media-body mb-5 text-white">
+          <h4 class="mt-0 mb-0">{{myprofile.name}}</h4>
+          <p class="small mb-4">{{myprofile.description}}</p>
+          <p class="small mb-4"> <i class="fa fa-map-marker mr-2"></i>{{myprofile.address}}</p>
+          <p class="small mb-4"> <i class="fa fa-phone mr-2"></i>{{myprofile.phone_no}}</p>
+          <p class="small mb-4"> <i class="fa fa-at mr-2"></i>{{myprofile.user.email}}</p>
+        </div>
+
       </div>
     </div>
+
+    <div class="bg-light p-4 d-flex justify-content-end text-center">
+      <ul class="list-inline mb-0">
+        <li class="list-inline-item">
+          <h5 class="font-weight-bold mb-0 d-block"><i class="fa fa-inr mr-1"></i> {{myprofile.donation_recived}}</h5><small class="text-muted">Donation Recived</small>
+        </li>
+      </ul>
+    </div>
+
   </div>
 
-  <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0"><a data-toggle="collapse" href="#collapseExample1" role="button" class="py-2 shadow-sm with-chevron" aria-expanded="false" aria-controls="collapseExample1">
-          Details<i class="fa fa-angle-down"></i>
-        </a></p>
-<div id="collapseExample1">
-  <ul class="nav flex-column bg-white mb-0">
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-                <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                {{myprofile.address}}
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-                <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                {{myprofile.phone_no}}
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-                <i class="fa fa-at mr-3 text-primary fa-fw"></i>
-                {{myprofile.user.email}}
-            </a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link text-dark font-italic">
-                <i class="fa fa-money mr-3 text-primary fa-fw"></i>
-                Donation Recived<br>{{myprofile.donation_recived}}
-            </a>
-    </li>
-  </ul>
-</div>
 
-  <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0"><a data-toggle="collapse" href="#collapseExample2" role="button" class="py-2 shadow-sm with-chevron" aria-expanded="false" aria-controls="collapseExample2">
-          About<i class="fa fa-angle-down"></i>
-        </a></p>
-        <div id="collapseExample2">
-  <p style="font-size: 14px;"><i>{{myprofile.purpose}}</i></p>
-  <br><br>
-</div>
-</div>
-<!-- End vertical navbar -->
-
-
-<!-- Page content holder -->
+<!-- work section -->
 <div class="page-content p-1" id="content">
-    <button style="position: relative; bottom: -90;" id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Show/Hide Info</small></button>
+  <div class="container py-5">
 
-    <div class="container py-5">
-  <!-- For Demo Purpose -->
-<section class="py-5 header text-center">
-    <div class="container py-4">
+    <section class="py-5 header text-center">
+      <div class="container py-4">
         <header>
-            <h1 class="display-4">All work done by {{myprofile.name}}.</h1>
-            <p class="font-italic text-muted mb-1">Below are all the work done by {{myprofile.name}} with the help of money that they raised.</p>
-            <p class="font-italic text-muted">Click the view more button to see details such as how much money was spend and who were the donars.
-            </p>
+          <h1 class="display-4">All work done by {{myprofile.name}}.</h1>
+          <p class="font-italic text-muted mb-1">Below are all the work done by {{myprofile.name}} with the help of money that they raised.</p>
+          <p class="font-italic text-muted">Click the view more button to see details such as how much money was spend and who were the donars.</p>
         </header>
-    </div>
-</section>
+      </div>
+    </section>
 
     <div class="s200">
       <form>
@@ -94,30 +74,27 @@
       </form>
     </div>
 
-  <div class="py-5">
-    <div class="row">
-
-
-      {% for MyPost in user_posts %}
-      <div class="col-lg-6 mb-3 mb-lg-0">
-        <div class="hover hover-4 text-white rounded"><img src="/media/{{MyPost.main_pic}}" alt="">
-          <div class="hover-overlay"></div>
-          <div class="hover-4-content">
-            <h3 class="hover-4-title text-uppercase font-weight-bold mb-0"><span class="font-weight-light">{{MyPost.title}} </span></h3>
-            <p class="hover-4-title text-uppercase font-weight-bold mb-0"><span class="font-weight-light">Published on: </span>{{MyPost.cr_date | date:"d/m/y"}}</p>
-            <p class="hover-4-description text-uppercase mb-0 small">{{MyPost.short_description}}</p>
+    <div class="py-5">
+      <div class="row">
+        {% for MyPost in user_posts %}
+        <div class="col-lg-6 mb-3 mb-lg-0">
+          <div class="hover hover-4 text-white rounded"><img src="/media/{{MyPost.main_pic}}" alt="">
+            <div class="hover-4-content">
+              <h3 class="hover-4-title text-uppercase font-weight-bold mb-0"><span class="font-weight-light">{{MyPost.title}} </span></h3>
+              <p class="hover-4-title text-uppercase font-weight-bold mb-0"><span class="font-weight-light">Published on: </span>{{MyPost.cr_date | date:"d/m/y"}}</p>
+              <p class="hover-4-description text-uppercase mb-0 small">{{MyPost.short_description}}</p>
+            </div>
           </div>
+          <a class="btn btn-dark btn-sm mt-2" href='/covid/mypost/{{MyPost.id}}'>Read More</a>
         </div>
-        <a class="btn btn-dark btn-sm mt-2" href='/covid/mypost/{{MyPost.id}}'>Read More</a>
+        {% endfor %}
       </div>
-      {% endfor %}
+    </div>
 
     </div>
   </div>
+</div>
 
-</div>
-</div>
-</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -128,26 +105,37 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
+      {% for MyPayment in bank_details %}
       <div class="modal-body">
-        {% for MyPayment in bank_details %}
-        <div class="bank_transfer-message svelte-qd117s">To donate to {{myprofile.name}}, copy their account details and transfer directly to them. Once they recive their money they will add you as a donar. </div>
-    <div class="neft-details svelte-qd117s">
-        <div>
-            <div class="ct-tr svelte-qd117s"><span class="ct-th svelte-qd117s">Account:</span> <span class="ct-td svelte-qd117s id="myInput"">{{MyPayment.account_num}}</span></div>
+        <div class="bank_transfer-message svelte-qd117s">To donate to {{myprofile.name}}, copy their account details and transfer directly to them. Once they recive their money they will add you as a donar.
+        </div>
+
+        <div class="neft-details svelte-qd117s">
+          <div>
+            <div class="ct-tr svelte-qd117s"><span class="ct-th svelte-qd117s">Account:</span> <span class="ct-td svelte-qd117s">{{MyPayment.account_num}}</span></div>
             <div class="ct-tr svelte-qd117s"><span class="ct-th svelte-qd117s">Bank Name:</span> <span class="ct-td svelte-qd117s">{{MyPayment.bank_name}}</span></div>
             <div class="ct-tr svelte-qd117s"><span class="ct-th svelte-qd117s">IFSC:</span> <span class="ct-td svelte-qd117s">{{MyPayment.ifsc}}</span></div>
             <div class="ct-tr svelte-qd117s"><span class="ct-th svelte-qd117s">Beneficiary Name:</span> <span class="ct-td svelte-qd117s">{{MyPayment.beneficiary_name}}</span></div>
+          </div>
         </div>
-    </div>
-{% endfor %}
+
       </div>
+
+      <input type="text" value="Account Number: {{MyPayment.account_num}}, Bank Name: {{MyPayment.bank_name}}, IFSC: {{MyPayment.ifsc}}, Beneficiary Name: {{MyPayment.beneficiary_name}}" id="myInput" style="opacity: 0;">
+      {% endfor %}
+
       <div class="modal-footer">
-        <button onclick="myFunction()">Copy text</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button onclick="myFunction()"  data-toggle="tooltip" data-placement="top" title="Copy to clipboard" id="myTooltip" class="btn btn-primary">
+          Copy donation details
+        </button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+
+
 <script>
     $(function() {
   // Sidebar toggle behavior
@@ -160,10 +148,18 @@
 function myFunction() {
   var copyText = document.getElementById("myInput");
   copyText.select();
-  copyText.setSelectionRange(0, 99999)
+  copyText.setSelectionRange(0, 99999);
   document.execCommand("copy");
-  alert("Copied the text: " + copyText.value);
+
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Details Copied!";
 }
+
+</script>
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
 </script>
 
 
