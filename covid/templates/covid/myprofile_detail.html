@@ -7,16 +7,6 @@
       <div class="media align-items-end profile-header">
         <div class="profile mr-3"><img src="/media/{{myprofile.pic}}" alt="..." width="130" class="rounded mb-2 img-thumbnail">
           <a href="#" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#exampleModal">Donate Now!</a>
-          <a class="btn btn-default" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Read More</a>
-        </div>
-
-        <div class="collapse multi-collapse" id="multiCollapseExample1">
-          <div class="aboutsec">
-            <div class="p-4 bg-light rounded shadow-sm">
-              <h5 class="mb-3">About {{myprofile.name}}</h5>
-              <p class="font-italic mb-0">{{myprofile.purpose}}.</p>
-            </div>
-          </div>
         </div>
 
         <div class="media-body mb-5 text-white">
@@ -35,9 +25,19 @@
         <li class="list-inline-item">
           <h5 class="font-weight-bold mb-0 d-block"><i class="fa fa-inr mr-1"></i> {{myprofile.donation_recived}}</h5><small class="text-muted">Donation Recived</small>
         </li>
+        <li class="list-inline-item">
+          <a class="btn btn-warning" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Read More</a>
+        </li>
       </ul>
     </div>
-
+    <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <div class="aboutsec">
+            <div class="p-4 bg-light rounded shadow-sm">
+              <h5 class="mb-3">About {{myprofile.name}}</h5>
+              <p class="font-italic mb-0">{{myprofile.purpose}}.</p>
+            </div>
+          </div>
+        </div>
   </div>
 
 
@@ -79,11 +79,12 @@
         {% for MyPost in user_posts %}
         <div class="col-lg-6 mb-3 mb-lg-0">
           <div class="hover hover-4 text-white rounded"><img src="/media/{{MyPost.main_pic}}" alt="">
-            <div class="hover-4-content">
-              <h3 class="hover-4-title text-uppercase font-weight-bold mb-0"><span class="font-weight-light">{{MyPost.title}} </span></h3>
-              <p class="hover-4-title text-uppercase font-weight-bold mb-0"><span class="font-weight-light">Published on: </span>{{MyPost.cr_date | date:"d/m/y"}}</p>
-              <p class="hover-4-description text-uppercase mb-0 small">{{MyPost.short_description}}</p>
-            </div>
+            <div class="hover-overlay"></div>
+              <div class="hover-4-content">
+                <h3 class="hover-4-title text-uppercase font-weight-bold mb-0"><span class="font-weight-light">{{MyPost.title}} </span></h3>
+                <p class="hover-4-title text-uppercase font-weight-bold mb-0"><span class="font-weight-light">Published on: </span>{{MyPost.cr_date | date:"d/m/y"}}</p>
+                <p class="hover-4-description text-uppercase mb-0 small">{{MyPost.short_description}}</p>
+              </div>
           </div>
           <a class="btn btn-dark btn-sm mt-2" href='/covid/mypost/{{MyPost.id}}'>Read More</a>
         </div>

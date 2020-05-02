@@ -42,6 +42,7 @@ class MyPost(models.Model):
 	main_pic = models.ImageField(upload_to = "image\\", null=True)
 	amount_spend = models.IntegerField(null=True, blank=True)
 	total_donars = models.IntegerField(null=True, blank=True)
+	donar_names = models.TextField(null=False, blank=False)
 	title = models.CharField(max_length = 200)
 	body = models.TextField(null=False, blank=False)
 	short_description = models.CharField(max_length = 240)
