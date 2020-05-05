@@ -55,7 +55,7 @@ class MyPost(models.Model):
 
 # The orginisation Bank Account Details model.
 class MyPayment(models.Model):
-	account_num = models.IntegerField(null=False, blank=False)
+	account_num = models.CharField(max_length=500, null=False, blank=False)
 	bank_name = models.CharField(max_length = 240, null=False, blank=False)
 	ifsc = models.CharField(max_length = 240, null=False, blank=False)
 	beneficiary_name = models.CharField(max_length = 240, null=False, blank=False)
