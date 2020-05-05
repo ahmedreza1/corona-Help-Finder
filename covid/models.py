@@ -27,6 +27,7 @@ class MyProfile(models.Model):
 	pic = models.URLField(null=True, blank=True)
 	donation_given = models.IntegerField(null=True, blank=True)
 	donation_recived = models.IntegerField(null=True, blank=True)
+	mail = models.URLField(null=True, blank=True)
 	purpose = models.TextField(null=True, blank=True)
 
 	def __str__(self):

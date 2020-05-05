@@ -64,7 +64,7 @@ class DashboardView(TemplateView):
 @method_decorator(login_required, name="dispatch")    
 class MyProfileUpdateView(UpdateView):
     model = MyProfile
-    fields = ["name", "address", "phone_no", "description", "pic", "purpose"]
+    fields = ["name", "address", "phone_no", "description", "pic", "purpose", "mail"]
   
 class MyProfileListView(ListView):
     model = MyProfile
