@@ -68,3 +68,25 @@ class FakeCheck(models.Model):
 	msg = models.TextField(null=False, blank=False)
 	def __str__(self):
 		return "%s" % self.msg
+
+# TensorFlow model to analyse user searches on FakeCheck
+
+import tensorflow as tf
+mnist = tf.FakeCheck.msg.datasets.mnist
+
+(x_train, y_train),(x_test, y_test) = mnist.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+model = tf.FakeCheck.msg.models.Sequential([
+  tf.FakeCheck.msg.layers.Flatten(input_shape=(28, 28)),
+  tf.FakeCheck.msg.layers.Dense(128, activation='relu'),
+  tf.FakeCheck.msg.layers.Dropout(0.2),
+  tf.FakeCheck.msg.layers.Dense(10, activation='softmax')
+])
+
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=5)
+model.evaluate(x_test, y_test)
