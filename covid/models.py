@@ -22,7 +22,7 @@ class MyProfile(models.Model):
 	user = models.OneToOneField(to=User, on_delete=CASCADE)
 	address = models.TextField(null=True, blank=True)
 	gender = models.CharField(max_length=20, default="Male", choices=(("Male", 'Male'), ("Female", "Female"), ("LGBTQ", "LGBTQ")))
-	phone_no = models.CharField(validators=[RegexValidator("^0?[5-9]{1}\d{9}$")], max_length=15, null=True, blank=True)
+	phone_no = models.CharField(max_length=15, null=True, blank=True)
 	description = models.CharField(max_length = 240, null=True, blank=True)
 	pic = models.URLField(null=True, blank=True)
 	donation_given = models.IntegerField(null=True, blank=True)
