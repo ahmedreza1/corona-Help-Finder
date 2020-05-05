@@ -5,7 +5,7 @@
   <div class="bg-white shadow rounded overflow-hidden">
     <div class="px-4 pb-4 bg-dark" >
       <div class="media align-items-end profile-header">
-        <div class="profile mr-3"><img src="/media/{{myprofile.pic}}" alt="..." width="130" class="rounded mb-2 img-thumbnail">
+        <div class="profile mr-3"><img src="{{myprofile.pic}}" alt="..." width="130" class="rounded mb-2 img-thumbnail">
           <a href="#" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#exampleModal">Donate Now!</a>
         </div>
 
@@ -78,7 +78,7 @@
       <div class="row">
         {% for MyPost in user_posts %}
         <div class="col-lg-6 mb-3 mb-lg-0">
-          <div class="hover hover-4 text-white rounded"><img src="/media/{{MyPost.main_pic}}" alt="">
+          <div class="hover hover-4 text-white rounded"><img src="{{MyPost.main_pic}}" alt="">
             <div class="hover-overlay"></div>
               <div class="hover-4-content">
                 <h3 class="hover-4-title text-uppercase font-weight-bold mb-0"><span class="font-weight-light">{{MyPost.title}} </span></h3>

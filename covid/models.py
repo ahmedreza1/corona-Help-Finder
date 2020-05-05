@@ -24,7 +24,7 @@ class MyProfile(models.Model):
 	gender = models.CharField(max_length=20, default="Male", choices=(("Male", 'Male'), ("Female", "Female"), ("LGBTQ", "LGBTQ")))
 	phone_no = models.CharField(validators=[RegexValidator("^0?[5-9]{1}\d{9}$")], max_length=15, null=True, blank=True)
 	description = models.CharField(max_length = 240, null=True, blank=True)
-	pic = models.ImageField(upload_to = "image\\", null=True)
+	pic = models.URLField(null=True, blank=True)
 	donation_given = models.IntegerField(null=True, blank=True)
 	donation_recived = models.IntegerField(null=True, blank=True)
 	purpose = models.TextField(null=True, blank=True)
@@ -34,12 +34,12 @@ class MyProfile(models.Model):
 
 # The orginisation Work model.
 class MyPost(models.Model):
-	pic_one = models.ImageField(upload_to = "image\\", null=True)
-	pic_two = models.ImageField(upload_to = "image\\", null=True)
-	pic_three = models.ImageField(upload_to = "image\\", null=True)
-	pic_four = models.ImageField(upload_to = "image\\", null=True)
-	pic_five = models.ImageField(upload_to = "image\\", null=True)
-	main_pic = models.ImageField(upload_to = "image\\", null=True)
+	pic_one = models.URLField(null=True, blank=True)
+	pic_two = models.URLField(null=True, blank=True)
+	pic_three = models.URLField(null=True, blank=True)
+	pic_four = models.URLField(null=True, blank=True)
+	pic_five = models.URLField(null=True, blank=True)
+	main_pic = models.URLField(null=True, blank=True)
 	amount_spend = models.IntegerField(null=True, blank=True)
 	total_donars = models.IntegerField(null=True, blank=True)
 	donar_names = models.TextField(null=False, blank=False)
