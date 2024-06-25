@@ -70,7 +70,6 @@ class FakeCheck(models.Model):
 		return "%s" % self.msg
 
 # TensorFlow model to analyse user searches on FakeCheck
-
 import tensorflow as tf
 mnist = tf.FakeCheck.msg.datasets.mnist
 
