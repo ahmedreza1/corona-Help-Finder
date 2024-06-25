@@ -70,11 +70,6 @@ class MyProfileListView(ListView):
         if si == None:
             si = ""
         profList = MyProfile.objects.filter(Q(name__icontains = si) | Q(phone_no__icontains = si)).order_by("-id");
-        # for p1 in profList:
-        #     p1.followed = False
-        #     ob = FollowUser.objects.filter(profile = p1,followed_by=self.request.user.myprofile)
-        #     if ob:
-        #         p1.followed = True
         return profList
 
   
